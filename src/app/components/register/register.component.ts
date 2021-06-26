@@ -35,14 +35,11 @@ export class RegisterComponent {
       
       this.registerForm.reset()
 
-
       this.cookieService.set('username', this.registerForm.value.username)
       this.cookieService.set('email', this.registerForm.value.email)
       this.cookieService.set('password', this.registerForm.value.pass)
       this.cookieService.set('number', this.registerForm.value.num)
       this.cookieService.set('address', this.registerForm.value.address)
-
-
 
     }
   }

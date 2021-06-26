@@ -35,19 +35,10 @@
 
         <form class="form-control" [formGroup]="registerForm" (ngSubmit)="submit()">
             <div class="form-floating mb-3">
-                <input type="text" name="firstName" class="form-control" id="floatingfn" placeholder="Jhon" formControlName="firstName" >
-                <label for="floatingfn">First Name</label>
-                <div *ngIf="f.firstName.invalid && (f.firstName.touched || f.firstName.dirty)">
-                    <span class="error" *ngIf="f.firstName.errors?.required">*First Name is required</span>
-                    <span class="error" *ngIf="f.firstName.errors?.pattern">*Only characters are valid</span>
-                </div>
-            </div>
-            <div class="form-floating mb-3">
-                <input type="text" name="lastName" class="form-control" id="floatingln" placeholder="Doe" formControlName="lastName" >
-                <label for="floatingln">Last Name</label>
-                <div *ngIf="f.lastName.invalid && (f.lastName.touched || f.lastName.dirty)">
-                    <span class="error" *ngIf="f.lastName.errors?.required">*Last Name is required</span>
-                    <span class="error" *ngIf="f.lastName.errors?.pattern">*only characters are valid</span>
+                <input type="text" name="username" class="form-control" id="floatingfn" placeholder="user" formControlName="username" >
+                <label for="floatingfn">Username</label>
+                <div *ngIf="f.username.invalid && (f.username.touched || f.username.dirty)">
+                    <span class="error" *ngIf="f.username.errors?.required">*First Name is required</span>
                 </div>
             </div>
             <div class="form-floating mb-3">
@@ -59,10 +50,17 @@
                 </div>
             </div>
             <div class="form-floating mb-3">
-                <input type="number" name="mobNumber" class="form-control" id="floatingemail" placeholder="0564456456" formControlName="mobNumber" >
+                <input type="text" name="num" class="form-control" id="floatingemail" placeholder="0564456456" formControlName="num" >
                 <label for="floatingemail">Mobile Number (Optional)</label>
-                <div *ngIf="f.mobNumber.invalid && (f.mobNumber.touched || f.mobNumber.dirty)">
-                    <span class="error" *ngIf="f.mobNumber.errors?.pattern">*only numbers are valid</span>
+                <div *ngIf="f.num.invalid && (f.num.touched || f.num.dirty)">
+                    <span class="error" *ngIf="f.num.errors?.pattern">*10 digit number</span>
+                </div>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="text" name="address" class="form-control" id="floatingemail" placeholder="london,E4" formControlName="address" >
+                <label for="floatingemail">Address (Optional)</label>
+                <div *ngIf="f.address.invalid && (f.address.touched || f.address.dirty)">
+                    <span class="error" *ngIf="f.address.errors?.pattern">*write a valid address</span>
                 </div>
             </div>
             <div class="form-floating mb-3">
@@ -70,7 +68,7 @@
                 <label for="floatingPassword">Password</label>
                 <div *ngIf="f.pass.invalid && (f.pass.touched || f.pass.dirty)">
                     <span class="error" *ngIf="f.pass.errors?.required">*Password is required</span>
-                    <span class="error" *ngIf="f.pass.errors?.pattern">*Must be at least 8 characters</span>
+                    <span class="error" *ngIf="f.pass.errors?.pattern">*At least 8 characters, one upper case, one lower case and one digit</span>
                 </div>
             </div>
             <div class="form-floating mb-3">

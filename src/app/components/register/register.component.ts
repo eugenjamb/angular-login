@@ -1,6 +1,7 @@
 import { stringify } from '@angular/compiler/src/util';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-register',
@@ -11,14 +12,14 @@ export class RegisterComponent {
 
   registerForm:FormGroup = new FormGroup({});
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private cookieService: CookieService ) {
 
     this.registerForm = fb.group({
-      firstName: ['', [Validators.required, Validators.pattern('[a-zA-Z]*')]],
-      lastName: ['', [Validators.required, Validators.pattern('[a-zA-Z]*')]],
+      username: ['', [Validators.required]],
       email:['', [Validators.required, Validators.email]],
-      mobNumber:['', [Validators.pattern('[0-9]*')]],
-      pass:['', [Validators.required, Validators.pattern('[a-zA-Z]*')]],
+      num:['', [Validators.pattern('^[0-9]{10}$')]],
+      address:['', [Validators.pattern('')]],
+      pass:['', [Validators.required, Validators.pattern("^(?=[^A-Z]*[A-Z])(?=[^a-z]*[a-z])(?=\\D*\\d)[A-Za-z\\d!$%@#£€*?&]{8,}$")]],
       confirmPass:['', [Validators.required]]
     },
     {
@@ -27,12 +28,21 @@ export class RegisterComponent {
    }
 
   submit() {
-    console.log(this.registerForm.value)
+
+    console.log(this.registerForm)
 
     if(this.registerForm.valid){
       
-      alert("New user was signed up")
       this.registerForm.reset()
+
+
+      this.cookieService.set('username', this.registerForm.value.username)
+      this.cookieService.set('email', this.registerForm.value.email)
+      this.cookieService.set('password', this.registerForm.value.pass)
+      this.cookieService.set('number', this.registerForm.value.num)
+      this.cookieService.set('address', this.registerForm.value.address)
+
+
 
     }
   }

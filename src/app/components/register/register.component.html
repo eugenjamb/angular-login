@@ -1,0 +1,97 @@
+
+<!--Registration page-->
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-sm-6">
+            <div class="card text-center mx-auto mt-5" style="max-width: 500px;">
+                <div class="card-header">
+                  Welcome to our website
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title">Don't have an account?</h5>
+                  <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#registrationForm">Register</button>
+                </div>
+                <div class="card-footer text-muted">
+                  <p> Existing user? <a href="#" onclick="event.preventDefault();">Sign in</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--Modal-->
+<div class="modal fade" id="registrationForm" tabindex="-1" aria-labelledby="labelId" aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+    <div class="modal-header">
+        <h6 class="modal-title" id="labelId">Fill in the details below</h6>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <div class="modal-body">
+        <h4 class="text-center">New User</h4>
+        <p class="text-center">We won't share your personal details with others! <a href="#" onclick="event.preventDefault();">T&C</a></p>
+        
+
+        <form class="form-control" [formGroup]="registerForm" (ngSubmit)="submit()">
+            <div class="form-floating mb-3">
+                <input type="text" name="firstName" class="form-control" id="floatingfn" placeholder="Jhon" formControlName="firstName" >
+                <label for="floatingfn">First Name</label>
+                <div *ngIf="f.firstName.invalid && (f.firstName.touched || f.firstName.dirty)">
+                    <span class="error" *ngIf="f.firstName.errors?.required">*First Name is required</span>
+                    <span class="error" *ngIf="f.firstName.errors?.pattern">*Only characters are valid</span>
+                </div>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="text" name="lastName" class="form-control" id="floatingln" placeholder="Doe" formControlName="lastName" >
+                <label for="floatingln">Last Name</label>
+                <div *ngIf="f.lastName.invalid && (f.lastName.touched || f.lastName.dirty)">
+                    <span class="error" *ngIf="f.lastName.errors?.required">*Last Name is required</span>
+                    <span class="error" *ngIf="f.lastName.errors?.pattern">*only characters are valid</span>
+                </div>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="email" name="email" class="form-control" id="floatingemail" placeholder="name@example.com" formControlName="email" >
+                <label for="floatingemail">Email address</label>
+                <div *ngIf="f.email.invalid && (f.email.touched || f.email.dirty)">
+                    <span class="error" *ngIf="f.email.errors?.required">*Email is required</span>
+                    <span class="error" *ngIf="f.email.errors?.email">*Enter a valid email address</span>
+                </div>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="number" name="mobNumber" class="form-control" id="floatingemail" placeholder="0564456456" formControlName="mobNumber" >
+                <label for="floatingemail">Mobile Number (Optional)</label>
+                <div *ngIf="f.mobNumber.invalid && (f.mobNumber.touched || f.mobNumber.dirty)">
+                    <span class="error" *ngIf="f.mobNumber.errors?.pattern">*only numbers are valid</span>
+                </div>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="password" name="pass" class="form-control" id="floatingPassword" placeholder="Password" formControlName="pass" >
+                <label for="floatingPassword">Password</label>
+                <div *ngIf="f.pass.invalid && (f.pass.touched || f.pass.dirty)">
+                    <span class="error" *ngIf="f.pass.errors?.required">*Password is required</span>
+                    <span class="error" *ngIf="f.pass.errors?.pattern">*Must be at least 8 characters</span>
+                </div>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="password" name="confirmPass" class="form-control" id="floatingConPassword" placeholder="Password" formControlName="confirmPass" >
+                <label for="floatingConPassword">Confirm Password</label>
+                <div *ngIf="f.confirmPass.invalid && (f.confirmPass.touched || f.confirmPass.dirty)">
+                    <span class="error" *ngIf="f.confirmPass.errors?.required">*Password is required</span>
+                    <span class="error" *ngIf="f.confirmPass.errors?.confirmedValidator">*Password do not match!</span>
+                </div>
+            </div>
+
+            <div class="d-flex">
+                <button type="submit" class="btn btn-outline-success mx-auto" [disabled]="registerForm.invalid" data-bs-dismiss="modal">Submit</button>
+            </div>
+        </form>
+
+        
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+    </div>
+    </div>
+</div>
+</div>

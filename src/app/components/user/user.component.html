@@ -1,0 +1,35 @@
+<!--Login page-->
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-sm-6">
+            <div class="card text-center mx-auto mt-5" style="max-width: 500px;">
+                <div class="card-header">
+                    <h5>Hello {{username}}! </h5>
+                </div>
+                <div class="card-body">
+                    <form class="row g-3">
+                        <div class="col-md-6">
+                          <label class="form-label">Email</label>
+                          <input type="email" class="form-control" value="{{email}}" disabled>
+                        </div>
+                        <div class="col-md-6">
+                          <label class="form-label">Username</label>
+                          <input type="text" class="form-control" value="{{username}}" disabled>
+                        </div>
+                        <div class="col-12">
+                          <label class="form-label">Address</label>
+                          <input type="text" class="form-control" value="{{address}}" disabled>
+                        </div>
+                        <div class="col-12">
+                          <label class="form-label">Number</label>
+                          <input type="text" class="form-control" value={{number}} disabled>
+                        </div>
+                      </form>
+                </div>
+                <div class="card-footer text-muted">
+                  <a routerLink="/">Log Out</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
